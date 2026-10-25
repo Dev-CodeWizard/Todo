@@ -1,37 +1,28 @@
-// 1. Import the tools we need.
+
 const express = require("express");
 const path = require("path");
 
-// 2. Create the Express app.
 const app = express();
 const PORT = 3000;
 
-// 3. Store todos in an array in server memory.
-// The array resets when the server restarts.
 let todos = [];
 let nextId = 1;
 
-// Read JSON sent by the browser.
 app.use(express.json());
 
-// Make files inside "public" available to the browser.
 app.use(express.static(path.join(__dirname, "public")));
 
-// Open the main page when someone visits http://localhost:3000/
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "todo.html"));
 });
 
-// GET: send all todos to the browser.
 app.get("/api/todos", (req, res) => {
   res.json(todos);
 });
 
-// POST: create a new todo.
 app.post("/api/todos", (req, res) => {
   const text = req.body.text;
 
-  // Do not accept empty text.
   if (!text || text.trim() === "") {
     return res.status(400).json({ error: "Please enter a task." });
   }
@@ -48,7 +39,6 @@ app.post("/api/todos", (req, res) => {
   res.status(201).json(newTodo);
 });
 
-// PATCH: change whether a todo is completed.
 app.patch("/api/todos/:id", (req, res) => {
   const id = Number(req.params.id);
   const todo = todos.find((item) => item.id === id);
@@ -65,7 +55,6 @@ app.patch("/api/todos/:id", (req, res) => {
   res.json(todo);
 });
 
-// DELETE: remove a todo.
 app.delete("/api/todos/:id", (req, res) => {
   const id = Number(req.params.id);
   const oldLength = todos.length;
@@ -79,7 +68,6 @@ app.delete("/api/todos/:id", (req, res) => {
   res.status(204).send();
 });
 
-// Start the server.
 app.listen(PORT, () => {
   console.log("Todo app is running at http://localhost:" + PORT);
 });
