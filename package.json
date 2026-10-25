@@ -1,7 +1,7 @@
 {
-  "name": "todo-app-beginner",
+  "name": "todo-app",
   "version": "1.0.0",
-  "description": "Beginner-friendly Week 2 Todo App assignment",
+  "description": "Todo App For GDGSC",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
