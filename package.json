@@ -1,0 +1,12 @@
+{
+  "name": "todo-app-beginner",
+  "version": "1.0.0",
+  "description": "Beginner-friendly Week 2 Todo App assignment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

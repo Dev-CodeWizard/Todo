@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="todo.css">
+  <script src="todo.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Todo List</h1>
+    <p class="subtitle">Write your tasks, but we both know you’ll never do them.</p>
+
+    <form id="todo-form">
+      <label for="task-input">New task</label>
+      <div class="form-row">
+        <input id="task-input" type="text" placeholder="For example, complete gdgsc task" required>
+        <button type="submit" id="add-button">Add Task</button>
+      </div>
+    </form>
+
+    <p id="message" role="status"></p>
+
+    <section aria-labelledby="tasks-heading">
+      <div class="list-heading">
+        <h2 id="tasks-heading">My Tasks</h2>
+        <p id="task-count">Loading tasks...</p>
+      </div>
+      <ul id="task-list"></ul>
+      <p id="empty-message">No tasks yet</p>
+    </section>
+  </main>
+</body>
+</html>
