@@ -1,4 +1,3 @@
-// Find the HTML elements that JavaScript needs to use.
 const form = document.getElementById("todo-form");
 const input = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
@@ -6,7 +5,6 @@ const message = document.getElementById("message");
 const taskCount = document.getElementById("task-count");
 const emptyMessage = document.getElementById("empty-message");
 
-// This function asks the server for all tasks.
 async function loadTasks() {
   try {
     const response = await fetch("/api/todos");
@@ -19,7 +17,6 @@ async function loadTasks() {
   }
 }
 
-// This function puts tasks on the page.
 function showTasks(todos) {
   taskList.innerHTML = "";
 
@@ -43,7 +40,6 @@ function showTasks(todos) {
     taskText.className = "task-text";
     taskText.textContent = todo.text;
 
-    // Complete button
     const completeButton = document.createElement("button");
     completeButton.className = "complete-button";
     completeButton.textContent = todo.completed ? "Reopen" : "Complete";
@@ -52,7 +48,6 @@ function showTasks(todos) {
       changeTaskStatus(todo.id, !todo.completed);
     });
 
-    // Delete button
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-button";
     deleteButton.textContent = "Delete";
@@ -73,7 +68,6 @@ function showTasks(todos) {
   emptyMessage.style.display = todos.length === 0 ? "block" : "none";
 }
 
-// When the form is submitted, send the new task to the server.
 form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
@@ -110,7 +104,6 @@ form.addEventListener("submit", async function (event) {
   }
 });
 
-// Tell the server to mark a task complete or incomplete.
 async function changeTaskStatus(id, completed) {
   try {
     const response = await fetch("/api/todos/" + id, {
@@ -133,7 +126,6 @@ async function changeTaskStatus(id, completed) {
   }
 }
 
-// Tell the server to delete a task.
 async function deleteTask(id) {
   try {
     const response = await fetch("/api/todos/" + id, {
@@ -152,5 +144,4 @@ async function deleteTask(id) {
   }
 }
 
-// Load saved-in-memory tasks when the page opens.
 loadTasks();
