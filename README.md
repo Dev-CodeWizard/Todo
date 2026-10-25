@@ -1,6 +1,6 @@
-# Beginner Todo App — Week 2 Assignment
+# Todo App — Week 2 Assignment
 
-This is a simple beginner-friendly todo app using HTML, CSS, browser JavaScript, Node.js and Express.
+This is a todo app using HTML, CSS, browser JavaScript, Node.js and Express.
 
 ## Run the project
 
